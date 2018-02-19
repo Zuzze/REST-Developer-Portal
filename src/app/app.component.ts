@@ -47,4 +47,12 @@ export class AppComponent implements OnInit {
       });
   }
 
+  postData(){
+
+  }
+
+  getData(){
+    
+  }
+
 }
