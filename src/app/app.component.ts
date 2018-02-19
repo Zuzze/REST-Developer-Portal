@@ -19,6 +19,8 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    //GET data
     this.http.get<UserResponse>('https://api.github.com/users/zuzze').subscribe(
       data => {
       console.log("User Login: " + data.login);
@@ -29,6 +31,20 @@ export class AppComponent implements OnInit {
     }
     console.log("server-side error occured");
   });
+
+  //POST data
+  const req = this.http.post('https://jsonplaceholder.typicode.com/posts/', {
+    title: 'foo',
+    body: 'bar',
+    userId: 1
+  })
+    .subscribe(
+      res => {
+        console.log(res);
+      },
+      err => {
+        console.log("Error occured");
+      });
   }
 
 }
