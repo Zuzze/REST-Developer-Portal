@@ -22,7 +22,7 @@ export class ExplorerComponent implements OnInit {
   @Input()  method: string;
   @Input()  headers: object;
   @Input()  contentType: string;
-  @Input()  body: object[];
+  body: object[] = [{"Email" : ""}, {"Full name" : ""}];
   email: string;
 
   @Output() sizeChange = new EventEmitter<number>();

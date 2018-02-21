@@ -1,9 +1,12 @@
+@import '../../../variables.scss';
+
 .mat-expansion-panel-header {
-    background-color: rgb(233, 73, 73);
+    background-color: $neutralBgLight;
+    color: white;
 }
 
 .mat-expansion-panel-body {
-    background: rgb(24, 37, 34);
+    background: $neutralBgLight;
 }
 
 textarea {

@@ -1,15 +1,40 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-</div>
+<!--Toolbar-->
+<mat-toolbar color="primary">
+  <span>Developer Portal</span>
+  <span class="example-fill-remaining-space"></span>
+  <span><button mat-button></button></span>
+</mat-toolbar>
 
-<explorer 
-  [title] = "" 
-  [url] = "moi"
-  [method] = "POST" 
-  [headers] = "{Authorization: 'Bearer eawke!ddxaweaarglebargleaw,1', 'Content-Type': 'application/json'}"
-  [contentType] = "application/json"
-  [body] = "">
-</explorer>
+<!-- content -->
+
+<mat-sidenav-container class="example-container" *ngIf="shouldRun">
+    <mat-sidenav opened mode="side">Start content</mat-sidenav>
+    <mat-sidenav opened mode="side" position="end">End content</mat-sidenav>
+    Implicit main content
+</mat-sidenav-container>
+  
+  
+
+<mat-card>
+  <mat-card-title>User</mat-card-title>
+    <explorer 
+    [title] = "" 
+    [url] = "moi"
+    [method] = "POST" 
+    [headers] = "{Authorization: 'Bearer eawke!ddxaweaarglebargleaw,1', 'Content-Type': 'application/json'}"
+    [contentType] = "application/json"
+    >
+  </explorer>
+</mat-card>
+<mat-card>
+    <mat-card-title>Car</mat-card-title>
+      <explorer 
+      [title] = "" 
+      [url] = "moi"
+      [method] = "POST" 
+      [headers] = "{Authorization: 'Bearer eawke!ddxaweaarglebargleaw,1', 'Content-Type': 'application/json'}"
+      [contentType] = "application/json"
+      >
+    </explorer>
+  </mat-card>
+

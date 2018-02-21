@@ -1,0 +1,12 @@
+@import '../variables.scss';
+
+.mat-card {
+    margin: 1em;
+    background: $neutralBg;
+    color: white;
+}
+
+.mat-toolbar {
+    margin: 0;
+    background-color: $neutralBgDark; 
+}

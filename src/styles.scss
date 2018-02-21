@@ -1,2 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import './variables.scss';
+
+@mixin linear-gradient($direction, $color-stops) {
+    @if is-direction($direction) == false {
+      $color-stops: $direction, $color-stops;
+      $direction: 180deg;
+    }
+  
+    background: nth(nth($color-stops, 1), 1);
+    background: -webkit-linear-gradient(legacy-direction($direction), $color-stops);
+    background: linear-gradient($direction, $color-stops);
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    @include linear-gradient($lightBg, $darkBg);
+    height: 100%;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
