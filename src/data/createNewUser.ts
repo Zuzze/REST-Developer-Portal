@@ -1,3 +1,4 @@
+export const CREATE_NEW_USER =
 {
     title: 'Create new user',
     url: 'https://jsonplaceholder.typicode.com/',

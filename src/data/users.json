@@ -1,0 +1,27 @@
+[
+    {
+        "full_name": "John Snow",
+        "email": "jonh@gmail.com",
+        "phone": "020456789"
+    },
+    {
+        "full_name" : "Daenerys Taragryen",
+        "email": "motherogdragons@gmail.com",
+        "phone": "020456782"
+    },
+    {
+        "full_name": "Khal Drogo",
+        "email": "drogo@gmail.com",
+        "phone": "020456755"
+    },
+    {
+        "full_name": "Tyrion Lannister",
+        "email": "thedwarf@gmail.com",
+        "phone": "032456789"
+    },
+    {
+        "full_name": "Sansa Stark",
+        "email": "ladyofwinterfell@gmail.com",
+        "phone": "020433789"
+    }
+]

@@ -7,34 +7,45 @@
 
 <!-- content -->
 
-<mat-sidenav-container class="example-container" *ngIf="shouldRun">
-    <mat-sidenav opened mode="side">Start content</mat-sidenav>
-    <mat-sidenav opened mode="side" position="end">End content</mat-sidenav>
-    Implicit main content
-</mat-sidenav-container>
-  
-  
-
 <mat-card>
   <mat-card-title>User</mat-card-title>
-    <explorer 
-    [title] = "" 
-    [url] = "moi"
-    [method] = "POST" 
-    [headers] = "{Authorization: 'Bearer eawke!ddxaweaarglebargleaw,1', 'Content-Type': 'application/json'}"
-    [contentType] = "application/json"
-    >
+  <explorer
+      [title] = getUsers.title
+      [url] = getUsers.url
+      [method] = getUsers.method
+      [headers] = getUsers.headers
+      [contentType] = getUsers.contentType
+      >  
+  </explorer>
+  <explorer
+  [title] = createUser.title
+  [url] = createUser.url
+  [method] = createUser.method
+  [headers] = createUser.headers
+  [contentType] = createUser.contentType
+  [body] = createUser.body
+  >
   </explorer>
 </mat-card>
+
 <mat-card>
     <mat-card-title>Car</mat-card-title>
-      <explorer 
-      [title] = "" 
-      [url] = "moi"
-      [method] = "POST" 
-      [headers] = "{Authorization: 'Bearer eawke!ddxaweaarglebargleaw,1', 'Content-Type': 'application/json'}"
-      [contentType] = "application/json"
-      >
+    <explorer
+        [title] = getUsers.title
+        [url] = getUsers.url
+        [method] = getUsers.method
+        [headers] = getUsers.headers
+        [contentType] = getUsers.contentType
+        >  
+    </explorer>
+    <explorer
+    [title] = createUser.title
+    [url] = createUser.url
+    [method] = createUser.method
+    [headers] = createUser.headers
+    [contentType] = createUser.contentType
+    [body] = createUser.body
+    >
     </explorer>
   </mat-card>
 

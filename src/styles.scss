@@ -1,13 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 @import './variables.scss';
+@import url('https://fonts.googleapis.com/css?family=Audiowide|Baloo|Bungee+Inline|Comfortaa');
 
 @mixin linear-gradient($direction, $color-stops) {
     @if is-direction($direction) == false {
       $color-stops: $direction, $color-stops;
       $direction: 180deg;
     }
-  
     background: nth(nth($color-stops, 1), 1);
     background: -webkit-linear-gradient(legacy-direction($direction), $color-stops);
     background: linear-gradient($direction, $color-stops);
@@ -25,3 +25,6 @@ body {
     background-attachment: fixed;
 }
 
+h1, h2, h3, .mat-card-title, .title, .mat-toolbar > span, button > span, .mat-tab-label-content {
+    font-family: 'Bungee Inline', cursive;
+}

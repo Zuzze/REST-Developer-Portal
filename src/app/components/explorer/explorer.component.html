@@ -1,20 +1,20 @@
 
-  <input [(ngModel)]="email" matInput placeholder="Email">
+  <!--<input [(ngModel)]="email" matInput placeholder="Email">-->
 
   <mat-expansion-panel>
     <mat-expansion-panel-header>
       <mat-panel-title>
-        <h1>{{method}}</h1>
+        <h2>{{method}}</h2>
       </mat-panel-title>
       <mat-panel-description>
-          {{title}}
+          <h3>{{title}}</h3>
       </mat-panel-description>
     </mat-expansion-panel-header>
     <!--Content-->
     <mat-tab-group>
         <mat-tab label="Create Request">
           <h2>Headers</h2>
-          <p>Authorization: '{{authorization}}'</p>
+          <p>Authorization: '{{headers.authorization}}'</p>
           <p>'Content-type': '{{contentType}}'</p>
 
           <h2>Base URL</h2>
@@ -39,7 +39,7 @@
     </div>
   </mat-expansion-panel>
 
-  <mat-expansion-panel (opened)="panelOpenState = true"
+  <!--<mat-expansion-panel (opened)="panelOpenState = true"
                        (closed)="panelOpenState = false">
     <mat-expansion-panel-header>
       <mat-panel-title>
@@ -50,4 +50,4 @@
       </mat-panel-description>
     </mat-expansion-panel-header>
     <p>I'm visible because I am open</p>
-  </mat-expansion-panel>
+  </mat-expansion-panel>-->

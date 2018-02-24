@@ -22,8 +22,8 @@ export class ExplorerComponent implements OnInit {
   @Input()  method: string;
   @Input()  headers: object;
   @Input()  contentType: string;
-  body: object[] = [{"Email" : ""}, {"Full name" : ""}];
-  email: string;
+  @Input()  body?: object[];
+
 
   @Output() sizeChange = new EventEmitter<number>();
   emailFormControl = new FormControl('', [
@@ -39,7 +39,7 @@ export class ExplorerComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    console.log("Hey" + this.title);
   }
 
   callREST(){
