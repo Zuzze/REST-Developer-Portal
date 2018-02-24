@@ -13,7 +13,7 @@
     </mat-expansion-panel-header>
     <!--Content-->
           <div *ngIf="body; then editable else viewable"></div>
-            
+      
           <!--Option 1) The request contains parameters that can be edited-->
             <ng-template #editable>
                 <mat-tab-group>
@@ -21,16 +21,21 @@
                   <!--UI for making requests, updated automatically to JSON tab-->
                   <mat-tab label="Create Request">
                     <h2>Headers</h2>
-                    <p>Authorization: {{headers["Authorization"]}}</p>
+                    <p>{{heders}}</p>
                     <p>Content-type: {{contentType}}</p>
           
                     <h2>Base URL</h2>
                     <p>{{url}}</p>
 
                     <h2>Body</h2>
-                    <mat-form-field  *ngFor="let item of body">
-                      <p>{{item.email}}</p>
-                      <input matInput type="" placeholder="Hey">
+                    <mat-form-field>
+                      <input matInput type="email" [(ngModel)]="email" placeholder="Email">
+                    </mat-form-field>
+                    <mat-form-field>
+                      <input matInput type="text" [(ngModel)]="name" placeholder="Full Name">
+                    </mat-form-field>
+                    <mat-form-field>
+                      <input matInput type="tel" [(ngModel)]="phone" placeholder="Phone">
                     </mat-form-field>
                   </mat-tab>
 
@@ -61,7 +66,7 @@
 
     <div>
       <h2>Responses</h2>
-        <textarea class="codeTextArea" matInput></textarea>
+        <textarea class="codeTextArea" #responses matInput></textarea>
     </div>
   </mat-expansion-panel>
 

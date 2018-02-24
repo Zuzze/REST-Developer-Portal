@@ -26,7 +26,6 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
 
     //console.log(this.getUsers);
-  
   }
 
   //POST new user data
@@ -40,7 +39,7 @@ export class AppComponent implements OnInit {
   })
     .subscribe(
       res => {
-        console.log(res);
+        //console.log(res);
       },
       err => {
         console.log("Error occured");
@@ -51,7 +50,7 @@ export class AppComponent implements OnInit {
   getUsersAPI(){
     this.http.get<UserResponse>('https://jsonplaceholder.typicode.com/users').subscribe(
       data => {
-      console.log(data);
+      //console.log(data);
       
     }, 
     (err : HttpErrorResponse) => {
