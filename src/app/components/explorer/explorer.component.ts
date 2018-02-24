@@ -23,6 +23,10 @@ export class ExplorerComponent implements OnInit {
   @Input()  headers: object;
   @Input()  contentType: string;
   @Input()  body?: object[];
+  requestJSON: string;
+  name: string = "John";
+  email: string = "john@gmail.com";
+  phone: string = "050-5554";
 
 
   @Output() sizeChange = new EventEmitter<number>();
@@ -39,8 +43,33 @@ export class ExplorerComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log("Hey" + this.title);
+    console.log(this.headers["Authorization"]);
+
+    /*    {
+      title: ${this.title},
+      url: '${this.url}',
+      method: '${this.method},
+      headers: {
+        Authorization: '${this.headers["Authorization"]}',
+        'Content-Type': '${this.contentType}'
+      },
+      body: [*/
+    this.requestJSON = `
+    {
+      "full-name": "${this.name}",
+      "email": "${this.email}",
+      "phone": "${this.phone}"
+    }`
   }
+
+  postData(){
+    
+  }
+    
+  getData(){
+        
+  }
+  
 
   callREST(){
     console.log("call sent");

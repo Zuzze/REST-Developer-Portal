@@ -6,17 +6,19 @@
 }
 
 .mat-expansion-panel-body {
-    background: $neutralBgLight;
+    background-color: $neutralBgLight;
 }
 
-textarea {
+.codeTextArea {
     min-height: 100px;
     background-color: rgb(22, 22, 22);
     border-radius: 10px;
     color: white;
-    padding: 10px;
+    padding: 1em;;
     margin: 1em;
     width: 90%;
+    font-family: Courier New, Courier, monospace;
+    font-size: 1.1em;
 }
 
 button {

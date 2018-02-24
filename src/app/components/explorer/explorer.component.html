@@ -2,6 +2,7 @@
   <!--<input [(ngModel)]="email" matInput placeholder="Email">-->
 
   <mat-expansion-panel>
+    <!--Basic description of request-->
     <mat-expansion-panel-header>
       <mat-panel-title>
         <h2>{{method}}</h2>
@@ -11,31 +12,56 @@
       </mat-panel-description>
     </mat-expansion-panel-header>
     <!--Content-->
-    <mat-tab-group>
-        <mat-tab label="Create Request">
-          <h2>Headers</h2>
-          <p>Authorization: '{{headers.authorization}}'</p>
-          <p>'Content-type': '{{contentType}}'</p>
+          <div *ngIf="body; then editable else viewable"></div>
+            
+          <!--Option 1) The request contains parameters that can be edited-->
+            <ng-template #editable>
+                <mat-tab-group>
 
-          <h2>Base URL</h2>
-          <p>{{url}}</p>
+                  <!--UI for making requests, updated automatically to JSON tab-->
+                  <mat-tab label="Create Request">
+                    <h2>Headers</h2>
+                    <p>Authorization: {{headers["Authorization"]}}</p>
+                    <p>Content-type: {{contentType}}</p>
+          
+                    <h2>Base URL</h2>
+                    <p>{{url}}</p>
 
-          <mat-form-field *ngFor="let item of body">
-            <input matInput placeholder="{{item.key}}">
-          </mat-form-field>
-        </mat-tab>
-        <mat-tab label="Preview JSON Request">
-          <textarea disabled matInput></textarea>
-        </mat-tab>
-    </mat-tab-group>
+                    <h2>Parameters</h2>
+                    <mat-form-field  *ngFor="let item of body">
+                      <p>{{item.email}}</p>
+                      <input matInput type="" placeholder="Hey">
+                    </mat-form-field>
+                  </mat-tab>
+
+                  <!--Preview Request in JSON-->
+                  <mat-tab label="Preview JSON Object">
+                    <textarea class="codeTextArea" [ngModel]="requestJSON">Send Request to see the result</textarea>
+                  </mat-tab>
+                </mat-tab-group>
+              </ng-template>
+            
+              <!--Option 2) The request contains parameters that can be edited-->
+            <ng-template #viewable>
+                <h2>Headers</h2>
+                <p>Authorization: {{headers["Authorization"]}}</p>
+                <p>Content-type: {{contentType}}</p>
+      
+                <h2>Base URL</h2>
+                <p>{{url}}</p>
+                
+                <h2>Parameters</h2>
+                <p>Request does not have parameters</p>
+            </ng-template>
+ 
 
     <div align="center"> 
         <button mat-raised-button (click)="callREST()">Send request</button>
     </div>
 
-    <div align="center">
+    <div>
       <h2>Responses</h2>
-        <textarea matInput></textarea>
+        <textarea class="codeTextArea" matInput></textarea>
     </div>
   </mat-expansion-panel>
 

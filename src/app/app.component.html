@@ -1,14 +1,22 @@
 <!--Toolbar-->
 <mat-toolbar color="primary">
   <span>Developer Portal</span>
-  <span class="example-fill-remaining-space"></span>
-  <span><button mat-button></button></span>
+  <span class="fill-remaining-space"></span>
+  <span>
+    <a href = "https://github.com/Zuzze/REST-Developer-Portal" target="_blank">
+      <img alt="github" src="./assets/img/github.png" height="40px" style="margin-top: 10px;"/>
+    </a>
+  </span>
 </mat-toolbar>
 
 <!-- content -->
 
 <mat-card>
-  <mat-card-title>User</mat-card-title>
+  <div align="center">
+      <h1>Users</h1>
+      <img  alt="user" #userImg src="./assets/img/user.png" value="./assets/img/userHover.png" class="card-img" (mouseenter)="hoverImg(userImg)" (mouseleave)="unhoverImg(userImg)"/>
+    </div>
+
   <explorer
       [title] = getUsers.title
       [url] = getUsers.url
@@ -27,25 +35,4 @@
   >
   </explorer>
 </mat-card>
-
-<mat-card>
-    <mat-card-title>Car</mat-card-title>
-    <explorer
-        [title] = getUsers.title
-        [url] = getUsers.url
-        [method] = getUsers.method
-        [headers] = getUsers.headers
-        [contentType] = getUsers.contentType
-        >  
-    </explorer>
-    <explorer
-    [title] = createUser.title
-    [url] = createUser.url
-    [method] = createUser.method
-    [headers] = createUser.headers
-    [contentType] = createUser.contentType
-    [body] = createUser.body
-    >
-    </explorer>
-  </mat-card>
 

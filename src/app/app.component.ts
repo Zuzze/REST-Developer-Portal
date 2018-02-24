@@ -61,4 +61,17 @@ export class AppComponent implements OnInit {
     
   }
 
+  // change image on hover (hover images end with word "Hover")
+  hoverImg(img) {
+    let format = img.src.substring(img.src.indexOf('.'));
+    let name = img.src.substring(0, img.src.indexOf('.'));
+    img.setAttribute('src', name + "Hover" + format);
+  }
+
+  unhoverImg(img) {
+    let format = img.src.substring(img.src.indexOf('.'));
+    let name = img.src.substring(0, img.src.indexOf('Hover'));
+    img.setAttribute('src', name + format);
+}
+
 }

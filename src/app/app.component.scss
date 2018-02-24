@@ -10,3 +10,13 @@
     margin: 0;
     background-color: $neutralBgDark; 
 }
+
+.card-img {
+    width: 80%;
+    max-width: 250px;
+    margin-bottom: 2em;
+}
+
+.fill-remaining-space {
+    flex: 1 1 auto;
+  }
