@@ -25,24 +25,18 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
 
-    console.log(this.getUsers);
-    //GET data
-    this.http.get<UserResponse>('https://api.github.com/users/zuzze').subscribe(
-      data => {
-      console.log("User Login: " + data.login);
-    }, 
-  (err : HttpErrorResponse) => {
-    if(err.error instanceof Error){
-      console.log("Client-side error occured");
-    }
-    console.log("server-side error occured");
-  });
+    //console.log(this.getUsers);
+  
+  }
 
-  //POST data
-  const req = this.http.post('https://jsonplaceholder.typicode.com/posts/', {
-    title: 'foo',
-    body: 'bar',
-    userId: 1
+  //POST new user data
+  postUserAPI(){
+      
+  const req = this.http.post('https://jsonplaceholder.typicode.com/users/', 
+  {
+    email: 'test@email.com',
+    full_name: 'Cersei Lannister',
+    phone: "04302749"
   })
     .subscribe(
       res => {
@@ -53,11 +47,19 @@ export class AppComponent implements OnInit {
       });
   }
 
-  postData(){
-
-  }
-
-  getData(){
+ //GET users data
+  getUsersAPI(){
+    this.http.get<UserResponse>('https://jsonplaceholder.typicode.com/users').subscribe(
+      data => {
+      console.log(data);
+      
+    }, 
+    (err : HttpErrorResponse) => {
+    if(err.error instanceof Error){
+      console.log("Client-side error occured");
+    }
+    console.log("server-side error occured");
+    });
     
   }
 
@@ -72,6 +74,5 @@ export class AppComponent implements OnInit {
     let format = img.src.substring(img.src.indexOf('.'));
     let name = img.src.substring(0, img.src.indexOf('Hover'));
     img.setAttribute('src', name + format);
-}
-
+  }
 }

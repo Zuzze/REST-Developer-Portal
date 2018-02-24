@@ -10,29 +10,31 @@
 </mat-toolbar>
 
 <!-- content -->
-
 <mat-card>
   <div align="center">
-      <h1>Users</h1>
-      <img  alt="user" #userImg src="./assets/img/user.png" value="./assets/img/userHover.png" class="card-img" (mouseenter)="hoverImg(userImg)" (mouseleave)="unhoverImg(userImg)"/>
-    </div>
+    <h1>Users</h1>
+    <img  alt="user" #userImg src="./assets/img/user.png" value="./assets/img/userHover.png" class="card-img" (mouseenter)="hoverImg(userImg)" (mouseleave)="unhoverImg(userImg)"/>
+  </div>
 
+  <!-- EXAMPLE COMPONENTS -->
+  <!-- Add User Example Explorer Component -->
   <explorer
-      [title] = getUsers.title
-      [url] = getUsers.url
-      [method] = getUsers.method
-      [headers] = getUsers.headers
-      [contentType] = getUsers.contentType
-      >  
+    [title] = createUser.title
+    [url] = createUser.url
+    [method] = createUser.method
+    [headers] = createUser.headers
+    [contentType] = createUser.contentType
+    [body] = createUser.body
+    (sendJSON)="postUserAPI()">
   </explorer>
+    <!-- Get users example Component -->
   <explorer
-  [title] = createUser.title
-  [url] = createUser.url
-  [method] = createUser.method
-  [headers] = createUser.headers
-  [contentType] = createUser.contentType
-  [body] = createUser.body
-  >
+    [title] = getUsers.title
+    [url] = getUsers.url
+    [method] = getUsers.method
+    [headers] = getUsers.headers
+    [contentType] = getUsers.contentType
+    (sendJSON)="getUsersAPI()">  
   </explorer>
 </mat-card>
 

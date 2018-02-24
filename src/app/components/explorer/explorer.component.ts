@@ -28,14 +28,18 @@ export class ExplorerComponent implements OnInit {
   email: string = "john@gmail.com";
   phone: string = "050-5554";
 
-
   @Output() sizeChange = new EventEmitter<number>();
   emailFormControl = new FormControl('', [
     Validators.required,
     Validators.email,
   ]);
-
   matcher = new MyErrorStateMatcher();
+
+
+  @Output()
+  sendJSON = new EventEmitter<string>();
+
+ 
 
   constructor() { 
     //used only for dependency injections in Angular 2+ (e.g services)
@@ -67,12 +71,13 @@ export class ExplorerComponent implements OnInit {
   }
     
   getData(){
-        
+    
   }
   
 
   callREST(){
     console.log("call sent");
+    this.sendJSON.emit('complete');
   }
 
 }

@@ -25,3 +25,12 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+Run fake REST
+npm install -g json-server
+json-server --watch
+get all users:
+http://localhost:3000/users
+
+users with a name:
+http://localhost:3000/users?full-name=John%20Snow
