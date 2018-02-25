@@ -1,11 +1,8 @@
-import { Component, OnInit, Input, Output, EventEmitter, ElementRef, ViewChild } from '@angular/core';
-import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
-import {ErrorStateMatcher} from '@angular/material/core';
+import { Component, OnInit, Input, ElementRef, ViewChild } from '@angular/core';
+import { FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
+import { ErrorStateMatcher } from '@angular/material/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Http, Response, Headers, RequestOptions } from '@angular/http';
-import {Observable} from 'rxjs/Rx';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
+import { Observable } from 'rxjs/Rx';
 
 
 interface UserResponse {
@@ -16,8 +13,7 @@ interface UserResponse {
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-    const isSubmitted = form && form.submitted;
-    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
+    return !!(control && control.invalid && (control.dirty || control.touched));
   }
 }
 
@@ -70,7 +66,6 @@ export class ExplorerComponent implements OnInit {
     this.headerKeyArr = Object.keys(this.headers);
     this.headerValueArr = Object.values(this.headers);
     this.requestSent = false;
-    //this.localDb = userData;
   }
 
   ngOnChange() {
@@ -81,6 +76,7 @@ export class ExplorerComponent implements OnInit {
   }
 
   //===== GET DATA ======
+
   //OPTION 1: use local JSON file from public assets folder
   getLocalJSON() {
     return this.http.get<UserResponse>('/assets/users.json').subscribe(
@@ -102,11 +98,8 @@ export class ExplorerComponent implements OnInit {
   getUsersAPI(){
     this.http.get<UserResponse>('https://jsonplaceholder.typicode.com/users').subscribe(
       data => {
-      //print single parameter:
-      //console.log(data[1].email); 
-      //console.log(data[1].name);
-
-      //print all objects
+      //print single parameter: console.log(data[1].email); 
+      //print all objects:
       console.log(data);
       this.responsesHTML.nativeElement.innerHTML = this.beautifyJSON(data);
     }, 
@@ -120,6 +113,7 @@ export class ExplorerComponent implements OnInit {
   }
   
   //===== POST DATA ======
+
   postUserAPI(){
   const req = this.http.post(
     'https://jsonplaceholder.typicode.com/users/', 
@@ -134,7 +128,8 @@ export class ExplorerComponent implements OnInit {
       });
   }
     
-  //click event handler for all explorer components
+  //==== EVENT HANDLING ====
+
   callREST(){
     console.log("API call sent");
     if(this.method === "POST"){
@@ -143,26 +138,9 @@ export class ExplorerComponent implements OnInit {
       //GET all users
       //alternative methods: use either local json or typicode sample users
       this.getLocalJSON();
-      //this.getUsersAPI();
+      //this.getUsersAPI(); 
     }
     this.requestSent = true;
-  }
-
-  //HELPERS
-
-  updateEmail(value){
-    this.email = value;
-    this.updateJSONRequest();
-  }
-
-  updateName(value){
-    this.name = value;
-    this.updateJSONRequest();
-  }
-
-  updatePhone(value){
-    this.phone = value;
-    this.updateJSONRequest();
   }
 
   updateJSONRequest(){

@@ -19,4 +19,33 @@
 
 .fill-remaining-space {
     flex: 1 1 auto;
+}
+
+/*Neon text effect*/
+.glow {
+    margin: 20px 0 20px 0;
+  }
+  
+  a {
+    text-decoration: none;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    transition: all 0.5s;
+    font-family: 'Comfortaa';
+  }
+
+  .glow a {
+    color: #fff;
+    -webkit-animation: neon1 1.5s ease-in-out infinite alternate;
+    -moz-animation: neon1 1.5s ease-in-out infinite alternate;
+    animation: neon1 1.5s ease-in-out infinite alternate;
+  }
+
+  @-webkit-keyframes neon1 {
+    from {
+      text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px $darkBg, 0 0 40px $darkBg, 0 0 50px $darkBg;
+    }
+    to {
+      text-shadow: 0 0 0px #fff, 0 0 5px #fff, 0 0 10px $darkBg, 0 0 15px $darkBg, 0 0 20px $darkBg;
+    }
   }

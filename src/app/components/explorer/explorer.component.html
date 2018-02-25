@@ -1,85 +1,76 @@
-
-  <!--<input [(ngModel)]="email" matInput placeholder="Email">-->
-
-  <mat-expansion-panel>
-    <!--Basic description of request-->
+<mat-expansion-panel 
+  (opened)="panelOpenState = true"
+  (closed)="panelOpenState = false" [ngClass]="{ 'active': panelOpenState }">
+    <!--Basic Request Description-->
     <mat-expansion-panel-header>
       <mat-panel-title>
-        <h2>{{method}}</h2>
+        <h2 class="method-text">{{method}}</h2>
       </mat-panel-title>
-      <mat-panel-description>
+      <mat-panel-description class="request-description">
           <h3>{{title}}</h3>
       </mat-panel-description>
     </mat-expansion-panel-header>
-    <!--Content-->
-          <!--Common-->
-          <h2>Headers</h2>
-          <p *ngFor="let key of headerKeyArr">
-            {{key}} : {{headerValueArr[headerKeyArr.indexOf(key)]}}
-          </p>
 
-          <h2>Base URL</h2>
-          <p>{{url}}</p>
+    <!--Common Common-->
+    <h2>Headers</h2>
+    <p *ngFor="let key of headerKeyArr">
+      {{key}} : {{headerValueArr[headerKeyArr.indexOf(key)]}}
+    </p>
 
-          <h2>Body</h2>
-          <div *ngIf="body; then editable else viewable"></div>
+    <h2>Base URL</h2>
+    <p>{{url}}</p>
 
-          <!--Option 1) The request contains parameters that can be edited-->
-            <ng-template #editable>
-                <mat-tab-group>
+    <h2>Body</h2>
+    <div *ngIf="body; then editable else viewable"></div>
 
-                  <!--UI for making requests, updated automatically to JSON tab-->
-                  <mat-tab label="Define parameters">
-                    <div class="form-container">
-                      <mat-form-field>
-                        <input matInput type="email" [ngModel]="email" [formControl]="emailFormControl" [errorStateMatcher]="matcher" (ngModelChange)="updateEmail($event)" name="email" minlength="3" maxlength="24" placeholder="Email">
-                      </mat-form-field>
-                      <mat-form-field>
-                        <input matInput type="text" [ngModel]="name" (ngModelChange)="updateName($event)" name="name" required placeholder="Full Name">
-                      </mat-form-field>
-                      <mat-form-field>
-                        <input matInput type="tel" [ngModel]="phone" (ngModelChange)="updatePhone($event)" name="phone" placeholder="Phone" pattern="\d\d\d-\d\d\d\d" title="Please enter phone number in format XXX-XXXX">
-                        <mat-hint align="end">Use format XXX-XXXX"</mat-hint>
-                      </mat-form-field>
-                    </div>
-                  </mat-tab>
+    <!--Option 1) The request contains parameters that can be edited-->
+      <ng-template #editable>
+          <mat-tab-group>
 
-                  <!--Preview Request in JSON-->
-                  <mat-tab label="Preview JSON Object">
-                    <textarea class="codeTextArea" disabled [ngModel]="JSONRequest">Send Request to see the result</textarea>
-                  </mat-tab>
-                </mat-tab-group>
-              </ng-template>
-            
-              <!--Option 2) The request contains parameters that can be edited-->
-            <ng-template #viewable>
-              <p>Request does not have parameters</p>
-            </ng-template>
- 
+            <!--UI for making requests, updated automatically to JSON tab-->
+            <mat-tab label="Define parameters">
+              <div>
+                <div class="form-container">
+                  <mat-form-field>
+                    <input matInput type="email" [(ngModel)]="email" [formControl]="emailFormControl" [errorStateMatcher]="matcher" (ngModelChange)="updateJSONRequest()" name="email" minlength="3" maxlength="24" placeholder="Email">
+                  </mat-form-field>
+                  <mat-form-field>
+                    <input matInput type="text" [(ngModel)]="name" (ngModelChange)="updateJSONRequest()" name="name" required placeholder="Full Name">
+                  </mat-form-field>
+                  <mat-form-field>
+                    <input matInput type="tel" [(ngModel)]="phone" (ngModelChange)="updateJSONRequest()" name="phone" placeholder="Phone" pattern="\d\d\d-\d\d\d\d" title="Please enter phone number in format XXX-XXXX">
+                    <mat-hint align="end">Use format XXX-XXXX"</mat-hint>
+                  </mat-form-field>
+                </div>
+              </div>
+            </mat-tab>
+
+            <!--Preview Request in JSON-->
+            <mat-tab label="Preview JSON Object">
+              <textarea class="codeTextArea" disabled [ngModel]="JSONRequest">Send Request to see the result</textarea>
+            </mat-tab>
+          </mat-tab-group>
+        </ng-template>
+      
+      <!--Option 2) The request parameters that cannot be edited-->
+      <ng-template #viewable>
+        <p>Request does not have parameters</p>
+      </ng-template>
 
     <div align="center"> 
         <button mat-raised-button (click)="callREST()">Send request</button>
     </div>
 
     <div *ngIf="requestSent">
-      <h2>Responses</h2>
-        <textarea class="codeTextArea" disabled #responses matInput></textarea>
-        <button mat-button (click)="requestSent = false">
-          Close Responses
-          <mat-icon>cancel</mat-icon>
-        </button>
+      <h2>Responses
+        <mat-icon matTooltip="In this imaginary test API, users are fetched from local JSON file and added to jsonplaceholder.typicode.com">
+          help_outline
+        </mat-icon>
+      </h2>
+      <textarea class="codeTextArea" disabled #responses matInput></textarea>
+      <button mat-button (click)="requestSent = false">
+        Close Responses
+        <mat-icon>cancel</mat-icon>
+      </button>
     </div>
   </mat-expansion-panel>
-
-  <!--<mat-expansion-panel (opened)="panelOpenState = true"
-                       (closed)="panelOpenState = false">
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        Self aware panel
-      </mat-panel-title>
-      <mat-panel-description>
-        Currently I am {{panelOpenState ? 'open' : 'closed'}}
-      </mat-panel-description>
-    </mat-expansion-panel-header>
-    <p>I'm visible because I am open</p>
-  </mat-expansion-panel>-->

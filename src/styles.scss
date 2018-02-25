@@ -1,7 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
-@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+//@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import './developer-app-theme.scss';
 @import './variables.scss';
-@import url('https://fonts.googleapis.com/css?family=Audiowide|Baloo|Bungee+Inline|Comfortaa|Courier+New');
+@import url('https://fonts.googleapis.com/css?family=Audiowide|Baloo|Oxygen|Comfortaa|Courier+New');
 
 @mixin linear-gradient($direction, $color-stops) {
     @if is-direction($direction) == false {
@@ -25,10 +26,24 @@ body {
     background-attachment: fixed;
 }
 
-h1, h2, h3, .mat-card-title, .title, .mat-toolbar > span, button > span, .mat-tab-label-content {
-    font-family: 'Bungee Inline', cursive;
+h1 {
+    font-family: 'Audiowide', sans-serif
+}
+
+h2 {
+    font-family: 'Comfortaa', sans-serif;
+    color: $lightBg;
+}
+
+h3, h4, h5, .mat-card-title, .title, button > span, .mat-tab-label-content, input {
+    font-family: 'Comfortaa', sans-serif;
+}
+
+.mat-input-element, .mat-form-field {
+    font: normal !important;
+    font-family: 'Comfortaa';
 }
 
 p {
-    font-family: 'Comfortaa';
+    font-family: 'Oxygen';
 }

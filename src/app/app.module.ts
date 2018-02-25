@@ -2,13 +2,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
-import { MatInputModule, MatTabsModule, MatExpansionModule, MatChipsModule, MatFormFieldModule, MatButtonModule, MatFormField, MatToolbarModule, MatCardModule, MatSidenav, MatSidenavModule, MatCheckbox, MatCheckboxModule, MatIconModule } from '@angular/material';
+import { MatInputModule, MatTabsModule, MatExpansionModule, MatChipsModule, MatFormFieldModule, MatButtonModule, MatFormField, MatToolbarModule, MatCardModule, MatSidenav, MatSidenavModule, MatCheckbox, MatCheckboxModule, MatIconModule, MatOptionModule, MatSelectModule, MatTooltipModule, MatTooltip } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
 import { AppComponent } from './app.component';
 import { HttpClient } from '@angular/common/http/src/client';
-import { GithubAuthInterceptor } from './githubauth.interceptor';
+import { DeveloperPortalAuthInterceptor } from './developerPortalAuth.interceptor';
 import { ExplorerComponent } from './components/explorer/explorer.component';
 
 @NgModule({
@@ -32,13 +32,19 @@ import { ExplorerComponent } from './components/explorer/explorer.component';
     MatCardModule,
     MatSidenavModule,
     MatCheckboxModule,
-    MatIconModule
+    MatIconModule,
+    MatOptionModule, 
+    MatSelectModule,
+    MatTooltipModule,
   ],
-  providers: [{
+  providers: [
+    /*{
+    //could be used for authentication
     provide: HTTP_INTERCEPTORS,
-    useClass: GithubAuthInterceptor,
+    useClass: DeveloperPortalAuthInterceptor,
     multi: true
-  }],
+  }*/
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

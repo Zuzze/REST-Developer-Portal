@@ -1,6 +1,7 @@
+<!-- DEMO CONTAINER-->
 <!--Toolbar-->
 <mat-toolbar color="primary">
-  <span>Developer Portal</span>
+  <h1 class="glow"><a>Developer Portal</a></h1>
   <span class="fill-remaining-space"></span>
   <span>
     <a href = "https://github.com/Zuzze/REST-Developer-Portal" target="_blank">
@@ -12,11 +13,10 @@
 <!-- content -->
 <mat-card>
   <div align="center">
-    <h1>Users</h1>
+    <h1>USERS</h1>
     <img  alt="user" #userImg src="./assets/img/user.png" value="./assets/img/userHover.png" class="card-img" (mouseenter)="hoverImg(userImg)" (mouseleave)="unhoverImg(userImg)"/>
   </div>
 
-  <!-- EXAMPLE COMPONENTS -->
   <!-- Add User Example Explorer Component -->
   <explorer
     [title] = createUser.title
