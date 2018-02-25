@@ -68,12 +68,12 @@
 
     <div *ngIf="requestSent">
       <h2 class="responses" >Responses</h2>
-        <mat-icon class="help" matTooltip="In this imaginary test API, users are fetched from local JSON file and added to jsonplaceholder.typicode.com">
+        <mat-icon class="help" matTooltip="In this imaginary test API, users are fetched and added to jsonplaceholder.typicode.com">
           help_outline
         </mat-icon>
         <div align="center">
-            <img *ngIf="responseCode == '200 OK - Successful operation'" matTooltip="Yay!" class="response-img" alt="ok" src="../../../assets/img/ok.png"/>
-            <img *ngIf="responseCode != '200 OK - Successful operation'" matTooltip="Meh..." class="response-img" alt="error" src="../../../assets/img/error.png"/>
+            <img *ngIf="responseCode == '200 OK - Successful operation'" matTooltip="Yay!" class="response-img" alt="ok" src="https://3.bp.blogspot.com/-rx3p1o1omZc/WpNHxxYYacI/AAAAAAAAZkU/n-FJX57VCPk5YRuI8InOb61OfsqVRZzpgCLcBGAs/s1600/ok.png"/>
+            <img *ngIf="responseCode != '200 OK - Successful operation'" matTooltip="Meh..." class="response-img" alt="error" src="https://4.bp.blogspot.com/-0vDhIm39-NI/WpNHx6r91EI/AAAAAAAAZkM/jxhOPRrAVmExXptFZZjSWJGzsjGX90LxwCLcBGAs/s1600/error.png"/>
         </div>
         <p>Response Code</p>
         <textarea class="codeTextAreaSmall" disabled matInput [(ngModel)]="responseCode"></textarea>

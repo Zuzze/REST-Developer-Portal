@@ -153,8 +153,8 @@ export class ExplorerComponent implements OnInit {
     } else {
       //GET all users
       //alternative methods: use either local json or typicode sample users
-      this.getLocalJSON();
-      //this.getUsersAPI(); 
+      //this.getLocalJSON();
+      this.getUsersAPI();
     }
     this.requestSent = true;
   }
