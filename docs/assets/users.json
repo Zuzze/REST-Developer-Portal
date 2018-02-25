@@ -1,0 +1,32 @@
+[
+    {
+        "email": "snow@gmail.com",
+        "full-name": "Jon Snow",
+        "phone": "020-4567"
+    },
+    {
+        "email": "motherofgdragons@gmail.com",
+        "full-name" : "Daenerys Targaryen",
+        "phone": "020-7777"
+    },
+    {
+        "email": "drogo@gmail.com",
+        "full-name": "Khal Drogo",
+        "phone": "020-3131"
+    },
+    {
+        "email": "thedwarf@gmail.com",
+        "full-name": "Tyrion Lannister",
+        "phone": "020-4567"
+    },
+    {
+        "email": "ladyofwinterfell@gmail.com",
+        "full-name": "Sansa Stark",
+        "phone": "020-1223"
+    },
+    {
+        "email": "thequeen@gmail.com",
+        "full-name": "Cersei Lannister",
+        "phone": "020-6666"
+    }
+]
