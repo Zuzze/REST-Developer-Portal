@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, ElementRef, ViewChild, ViewChildren, QueryList } from '@angular/core';
 import { FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
@@ -29,6 +29,7 @@ export class ExplorerComponent implements OnInit {
   //DOM references
   @ViewChild('responses') //refers to #responses
   private responsesHTML: ElementRef;
+  @ViewChildren('parameterInput') inputs;
 
   //parent input, comes from app.component.html
   @Input()  title: string;
@@ -37,6 +38,12 @@ export class ExplorerComponent implements OnInit {
   @Input()  headers: object;
   @Input()  contentType: string;
   @Input()  body?: object[];
+
+
+  //response codes with messages
+  OK = "200 OK - Successful operation";
+  CLIENT_ERROR = "400 Bad Request - Client side error occured, see details by hovering invalid inputs";
+  SERVER_ERROR = "500 Internal server error - server side error occured"
 
   //user input
   name: string = "";
@@ -49,6 +56,8 @@ export class ExplorerComponent implements OnInit {
   headerArr;
   requestSent: boolean;
   localDb: string = "";
+  responseCode: string = this.OK;
+
 
   //Validators for custom email validation but
   /*emailFormControl = new FormControl('', [
@@ -64,7 +73,7 @@ export class ExplorerComponent implements OnInit {
 
   ngOnInit() {
     this.updateJSONRequest();
-    this.headerArr = Object.entries(this.headers);
+    //this.headerArr = Object.entries(this.headers);
     this.headerKeyArr = Object.keys(this.headers);
     this.headerValueArr = Object.values(this.headers);
     this.requestSent = false;
@@ -89,27 +98,31 @@ export class ExplorerComponent implements OnInit {
       }, 
       (err : HttpErrorResponse) => {
         if(err.error instanceof Error){
-          console.log("Client-side error occured");
+          console.log(this.CLIENT_ERROR);
         }
-        console.log("server-side error occured");
+        console.log(this.SERVER_ERROR);
       });
   }
 
   //OPTION 2: get sample users data using typicode 
   //working but user properties not same as in the assignment
   getUsersAPI(){
+    this.responseCode = this.OK;
     this.http.get<UserResponse>('https://jsonplaceholder.typicode.com/users').subscribe(
       data => {
       //print single parameter: console.log(data[1].email); 
       //print all objects:
       console.log(data);
+      this.responseCode = this.OK;
       this.responsesHTML.nativeElement.innerHTML = this.beautifyJSON(data);
     }, 
     (err : HttpErrorResponse) => {
-    if(err.error instanceof Error){
-      console.log("Client-side error occured");
-    }
-    console.log("server-side error occured");
+      if(err.error instanceof Error){
+        console.log(this.CLIENT_ERROR)
+        this.responseCode = this.CLIENT_ERROR
+      }
+        this.responseCode = this.SERVER_ERROR
+        console.log(this.SERVER_ERROR);
     });
     
   }
@@ -117,6 +130,7 @@ export class ExplorerComponent implements OnInit {
   //===== POST DATA ======
 
   postUserAPI(){
+  this.checkInputValidity();//generates response code for fake API
   const req = this.http.post(
     'https://jsonplaceholder.typicode.com/users/', 
     JSON.parse(this.JSONRequest))
@@ -153,5 +167,18 @@ export class ExplorerComponent implements OnInit {
   beautifyJSON(JSONString): string {
     // stringify with tabs inserted at each level
     return JSON.stringify(JSONString, null, "\t")
+  }
+
+  checkInputValidity(){
+    //each parameter input is marked with '#parameterinput' in HTML
+    this.responseCode = this.OK; 
+    //console.log(this.inputs._results);
+    for(let input of this.inputs._results){
+      if(input.nativeElement.classList.contains('ng-invalid')){
+        this.responseCode = this.CLIENT_ERROR;
+        break;
+      }
+    }
+    
   }
 }

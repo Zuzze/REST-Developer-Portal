@@ -32,13 +32,13 @@
               <div>
                 <div class="form-container">
                   <mat-form-field>
-                    <input matInput type="email" [(ngModel)]="email" (ngModelChange)="updateJSONRequest()" name="email" minlength="3" maxlength="24" placeholder="Email">
+                    <input matInput #parameterInput type="email" [(ngModel)]="email" (ngModelChange)="updateJSONRequest()" name="email" minlength="3" maxlength="24" placeholder="Email">
                   </mat-form-field>
                   <mat-form-field>
-                    <input matInput type="text" [(ngModel)]="name" (ngModelChange)="updateJSONRequest()" name="name" required placeholder="Full Name">
+                    <input matInput #parameterInput type="text" [(ngModel)]="name" (ngModelChange)="updateJSONRequest()" name="name" required placeholder="Full Name">
                   </mat-form-field>
                   <mat-form-field>
-                    <input matInput type="tel" [(ngModel)]="phone" (ngModelChange)="updateJSONRequest()" name="phone" placeholder="Phone" pattern="\d\d\d-\d\d\d\d" title="Please enter phone number in format XXX-XXXX">
+                    <input matInput #parameterInput type="tel" [(ngModel)]="phone" (ngModelChange)="updateJSONRequest()" name="phone" placeholder="Phone" pattern="\d\d\d-\d\d\d\d" title="Please enter phone number in format XXX-XXXX">
                     <mat-hint align="end">Use format XXX-XXXX"</mat-hint>
                   </mat-form-field>
                 </div>
@@ -66,8 +66,12 @@
         <mat-icon class="help" matTooltip="In this imaginary test API, users are fetched from local JSON file and added to jsonplaceholder.typicode.com">
           help_outline
         </mat-icon>
+        <div align="center">
+            <img *ngIf="responseCode == '200 OK - Successful operation'" matTooltip="Yay!" class="response-img" alt="ok" src="../../../assets/img/ok.png"/>
+            <img *ngIf="responseCode != '200 OK - Successful operation'" matTooltip="Meh..." class="response-img" alt="error" src="../../../assets/img/error.png"/>
+        </div>
         <p>Response Code</p>
-        <textarea class="codeTextAreaSmall" disabled matInput>200 - successful operation</textarea>
+        <textarea class="codeTextAreaSmall" disabled matInput [(ngModel)]="responseCode"></textarea>
         <p>Response Body</p>
       <textarea class="codeTextArea" disabled #responses matInput></textarea>
       <div align="right">

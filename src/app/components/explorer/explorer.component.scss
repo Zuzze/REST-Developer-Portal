@@ -80,6 +80,7 @@ input {
     color: white;
     display: inline;
     position: absolute;
+    margin-left: 10px;
 }
 
 .responses {
@@ -93,4 +94,9 @@ input {
 
 .close-responses{
     margin: 1em;
+}
+
+.response-img {
+    height: 150px;
+    margin-top: 1em;
 }
