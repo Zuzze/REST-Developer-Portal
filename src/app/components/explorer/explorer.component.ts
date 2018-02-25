@@ -35,7 +35,7 @@ export class ExplorerComponent implements OnInit {
   @Input()  url: string;
   @Input()  method: string;
   @Input()  headers: object;
-  @Input()  contentType: string;
+  //@Input()  contentType?: string = "application/json";
   @Input()  body?: object[];
 
 
@@ -56,6 +56,7 @@ export class ExplorerComponent implements OnInit {
   requestSent: boolean;
   localDb: string = "";
   responseCode: string = this.OK;
+  panelOpenState: boolean;
 
 
   //Validators for custom email validation but
