@@ -11,7 +11,12 @@ interface UserResponse {
   phone: string;
 }
 
-
+//in modern browsers HTML5 input type 'email' does the validation and shows error on hover
+export class MyErrorStateMatcher implements ErrorStateMatcher {
+  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+    return !!(control.invalid && (control.dirty || control.touched));
+  }
+}
 
 @Component({
   selector: 'explorer',
@@ -55,7 +60,7 @@ export class ExplorerComponent implements OnInit {
 
   //Validators for custom email validation but
   emailFormControl = new FormControl('', [
-    Validators.email, Validators.minLength(3), Validators.maxLength(24), Validators.nullValidator
+    Validators.email, Validators.minLength(3), Validators.maxLength(24)
   ]);
   //matcher = new MyErrorStateMatcher();
 
@@ -169,10 +174,10 @@ export class ExplorerComponent implements OnInit {
     //console.log(this.inputs._results);
     for(let input of this.inputs._results){
       if(input.nativeElement.classList.contains('ng-invalid')){
-        this.responseCode = this.CLIENT_ERROR;
-        break;
+          console.log(input.nativeElement.name + " is invalid");
+          this.responseCode = this.CLIENT_ERROR;
+          break;
       }
     }
-    
   }
 }

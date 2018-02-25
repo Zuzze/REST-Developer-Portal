@@ -32,12 +32,12 @@
               <div>
                 <div class="form-container">
                   <mat-form-field>
+                    <!--min length will be forced by regex pattern in case form is not empty-->
+                    <!--email regex simplified, could be improved (in HTML 5 email type dot is not required)-->
                     <input matInput #parameterInput type="email" 
                     [(ngModel)]="email" (ngModelChange)="updateJSONRequest()" 
-                    ngModel email
-                    name="email" minlength="3" maxlength="24" 
-                    [formControl]="emailFormControl"
-                    placeholder="Email">
+                    name="email" required="false" maxlength="24"
+                    placeholder="Email" pattern="^$|^[^@\s]+@[^@\s]+$">
                   </mat-form-field>
                   <mat-form-field>
                     <input matInput #parameterInput type="text" [(ngModel)]="name" (ngModelChange)="updateJSONRequest()" name="name" required placeholder="Full Name">
