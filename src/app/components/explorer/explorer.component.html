@@ -32,7 +32,12 @@
               <div>
                 <div class="form-container">
                   <mat-form-field>
-                    <input matInput #parameterInput type="email" [(ngModel)]="email" (ngModelChange)="updateJSONRequest()" name="email" minlength="3" maxlength="24" placeholder="Email">
+                    <input matInput #parameterInput type="email" 
+                    [(ngModel)]="email" (ngModelChange)="updateJSONRequest()" 
+                    ngModel email
+                    name="email" minlength="3" maxlength="24" 
+                    [formControl]="emailFormControl"
+                    placeholder="Email">
                   </mat-form-field>
                   <mat-form-field>
                     <input matInput #parameterInput type="text" [(ngModel)]="name" (ngModelChange)="updateJSONRequest()" name="name" required placeholder="Full Name">
