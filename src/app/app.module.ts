@@ -2,9 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
-import { MatInputModule, MatTabsModule, MatExpansionModule, MatChipsModule, MatFormFieldModule, MatButtonModule, MatFormField, MatToolbarModule, MatCardModule, MatSidenav, MatSidenavModule, MatCheckbox, MatCheckboxModule } from '@angular/material';
+import { MatInputModule, MatTabsModule, MatExpansionModule, MatChipsModule, MatFormFieldModule, MatButtonModule, MatFormField, MatToolbarModule, MatCardModule, MatSidenav, MatSidenavModule, MatCheckbox, MatCheckboxModule, MatIconModule } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
 import { AppComponent } from './app.component';
 import { HttpClient } from '@angular/common/http/src/client';
@@ -19,6 +19,7 @@ import { ExplorerComponent } from './components/explorer/explorer.component';
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
     MatInputModule,
@@ -30,7 +31,8 @@ import { ExplorerComponent } from './components/explorer/explorer.component';
     MatToolbarModule,
     MatCardModule,
     MatSidenavModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatIconModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

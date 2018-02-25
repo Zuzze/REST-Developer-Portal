@@ -12,51 +12,48 @@
       </mat-panel-description>
     </mat-expansion-panel-header>
     <!--Content-->
+          <!--Common-->
+          <h2>Headers</h2>
+          <p *ngFor="let key of headerKeyArr">
+            {{key}} : {{headerValueArr[headerKeyArr.indexOf(key)]}}
+          </p>
+
+          <h2>Base URL</h2>
+          <p>{{url}}</p>
+
+          <h2>Body</h2>
           <div *ngIf="body; then editable else viewable"></div>
-      
+
           <!--Option 1) The request contains parameters that can be edited-->
             <ng-template #editable>
                 <mat-tab-group>
 
                   <!--UI for making requests, updated automatically to JSON tab-->
-                  <mat-tab label="Create Request">
-                    <h2>Headers</h2>
-                    <p>{{heders}}</p>
-                    <p>Content-type: {{contentType}}</p>
-          
-                    <h2>Base URL</h2>
-                    <p>{{url}}</p>
-
-                    <h2>Body</h2>
-                    <mat-form-field>
-                      <input matInput type="email" [(ngModel)]="email" placeholder="Email">
-                    </mat-form-field>
-                    <mat-form-field>
-                      <input matInput type="text" [(ngModel)]="name" placeholder="Full Name">
-                    </mat-form-field>
-                    <mat-form-field>
-                      <input matInput type="tel" [(ngModel)]="phone" placeholder="Phone">
-                    </mat-form-field>
+                  <mat-tab label="Define parameters">
+                    <div class="form-container">
+                      <mat-form-field>
+                        <input matInput type="email" [ngModel]="email" [formControl]="emailFormControl" [errorStateMatcher]="matcher" (ngModelChange)="updateEmail($event)" name="email" minlength="3" maxlength="24" placeholder="Email">
+                      </mat-form-field>
+                      <mat-form-field>
+                        <input matInput type="text" [ngModel]="name" (ngModelChange)="updateName($event)" name="name" required placeholder="Full Name">
+                      </mat-form-field>
+                      <mat-form-field>
+                        <input matInput type="tel" [ngModel]="phone" (ngModelChange)="updatePhone($event)" name="phone" placeholder="Phone" pattern="\d\d\d-\d\d\d\d" title="Please enter phone number in format XXX-XXXX">
+                        <mat-hint align="end">Use format XXX-XXXX"</mat-hint>
+                      </mat-form-field>
+                    </div>
                   </mat-tab>
 
                   <!--Preview Request in JSON-->
                   <mat-tab label="Preview JSON Object">
-                    <textarea class="codeTextArea" [ngModel]="requestJSON">Send Request to see the result</textarea>
+                    <textarea class="codeTextArea" disabled [ngModel]="JSONRequest">Send Request to see the result</textarea>
                   </mat-tab>
                 </mat-tab-group>
               </ng-template>
             
               <!--Option 2) The request contains parameters that can be edited-->
             <ng-template #viewable>
-                <h2>Headers</h2>
-                <p>Authorization: {{headers["Authorization"]}}</p>
-                <p>Content-type: {{contentType}}</p>
-      
-                <h2>Base URL</h2>
-                <p>{{url}}</p>
-
-                <h2>Body</h2>
-                <p>Request does not have parameters</p>
+              <p>Request does not have parameters</p>
             </ng-template>
  
 
@@ -64,9 +61,13 @@
         <button mat-raised-button (click)="callREST()">Send request</button>
     </div>
 
-    <div>
+    <div *ngIf="requestSent">
       <h2>Responses</h2>
-        <textarea class="codeTextArea" #responses matInput></textarea>
+        <textarea class="codeTextArea" disabled #responses matInput></textarea>
+        <button mat-button (click)="requestSent = false">
+          Close Responses
+          <mat-icon>cancel</mat-icon>
+        </button>
     </div>
   </mat-expansion-panel>
 
