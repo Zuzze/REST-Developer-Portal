@@ -11,16 +11,18 @@ interface UserResponse {
   phone: string;
 }
 
+/* Validators for custom email validation
+//in modern browsers HTML5 input type 'email' does the validation and shows error on hover
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-    return !!(control && control.invalid && (control.dirty || control.touched));
+    return !!(control.invalid && (control.dirty || control.touched));
   }
-}
+}*/
 
 @Component({
   selector: 'explorer',
   templateUrl: './explorer.component.html',
-  styleUrls: ['./explorer.component.scss']
+  styleUrls: ['./explorer.component.scss'],
 })
 
 export class ExplorerComponent implements OnInit {
@@ -48,11 +50,11 @@ export class ExplorerComponent implements OnInit {
   requestSent: boolean;
   localDb: string = "";
 
-  //Validators
-  emailFormControl = new FormControl('', [
+  //Validators for custom email validation but
+  /*emailFormControl = new FormControl('', [
     Validators.email,
-  ]);
-  matcher = new MyErrorStateMatcher();
+  ]);*/
+  //matcher = new MyErrorStateMatcher();
 
 
   constructor(private http: HttpClient) { 

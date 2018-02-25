@@ -33,6 +33,11 @@
     border-style: none;
 }
 
+.codeTextAreaSmall {
+    @extend .codeTextArea;
+    min-height: 20px;
+}
+
 .mat-raised-button {
     min-width: 200px;
     background: $darkBg;
@@ -69,4 +74,23 @@ input {
 .request-description {
     margin-top: 5px;
     color: white;
+}
+
+.help{
+    color: white;
+    display: inline;
+    position: absolute;
+}
+
+.responses {
+    display: inline;
+}
+
+::ng-deep .mat-tooltip {
+    font-family: 'Oxygen', sans-serif;
+    font-size: 1.1em;
+}
+
+.close-responses{
+    margin: 1em;
 }

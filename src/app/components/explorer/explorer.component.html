@@ -32,7 +32,7 @@
               <div>
                 <div class="form-container">
                   <mat-form-field>
-                    <input matInput type="email" [(ngModel)]="email" [formControl]="emailFormControl" [errorStateMatcher]="matcher" (ngModelChange)="updateJSONRequest()" name="email" minlength="3" maxlength="24" placeholder="Email">
+                    <input matInput type="email" [(ngModel)]="email" (ngModelChange)="updateJSONRequest()" name="email" minlength="3" maxlength="24" placeholder="Email">
                   </mat-form-field>
                   <mat-form-field>
                     <input matInput type="text" [(ngModel)]="name" (ngModelChange)="updateJSONRequest()" name="name" required placeholder="Full Name">
@@ -62,15 +62,19 @@
     </div>
 
     <div *ngIf="requestSent">
-      <h2>Responses
-        <mat-icon matTooltip="In this imaginary test API, users are fetched from local JSON file and added to jsonplaceholder.typicode.com">
+      <h2 class="responses" >Responses</h2>
+        <mat-icon class="help" matTooltip="In this imaginary test API, users are fetched from local JSON file and added to jsonplaceholder.typicode.com">
           help_outline
         </mat-icon>
-      </h2>
+        <p>Response Code</p>
+        <textarea class="codeTextAreaSmall" disabled matInput>200 - successful operation</textarea>
+        <p>Response Body</p>
       <textarea class="codeTextArea" disabled #responses matInput></textarea>
-      <button mat-button (click)="requestSent = false">
-        Close Responses
-        <mat-icon>cancel</mat-icon>
-      </button>
+      <div align="right">
+        <button class="close-responses" mat-button (click)="requestSent = false">
+            Close Responses
+            <mat-icon>cancel</mat-icon>
+        </button>
+      </div>
     </div>
   </mat-expansion-panel>
