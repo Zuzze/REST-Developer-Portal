@@ -2,7 +2,7 @@
 //@import '~@angular/material/prebuilt-themes/indigo-pink.css';
 @import './developer-app-theme.scss';
 @import './variables.scss';
-@import url('https://fonts.googleapis.com/css?family=Audiowide|Baloo|Oxygen|Comfortaa|Courier+New');
+//@import url('https://fonts.googleapis.com/css?family=Audiowide|Baloo|Oxygen|Comfortaa|Courier+New');
 
 @mixin linear-gradient($direction, $color-stops) {
     @if is-direction($direction) == false {
@@ -41,7 +41,7 @@ h3, h4, h5, .mat-card-title, .title, button > span, .mat-tab-label-content, inpu
 
 .mat-input-element, .mat-form-field {
     font: normal !important;
-    font-family: 'Comfortaa';
+    font-family: 'Oxygen', sans-serif !important;
 }
 
 p {
