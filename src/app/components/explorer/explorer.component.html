@@ -11,7 +11,7 @@
       </mat-panel-description>
     </mat-expansion-panel-header>
 
-    <!--Common Common-->
+    <!--Common content-->
     <h2>Headers</h2>
     <p *ngFor="let key of headerKeyArr">
       {{key}} : {{headerValueArr[headerKeyArr.indexOf(key)]}}
@@ -44,7 +44,7 @@
                   </mat-form-field>
                   <mat-form-field>
                     <input matInput #parameterInput type="tel" [(ngModel)]="phone" (ngModelChange)="updateJSONRequest()" name="phone" placeholder="Phone" pattern="\d\d\d-\d\d\d\d" title="Please enter phone number in format XXX-XXXX">
-                    <mat-hint align="end">Use format XXX-XXXX"</mat-hint>
+                    <mat-hint align="end">Use format XXX-XXXX</mat-hint>
                   </mat-form-field>
                 </div>
               </div>
@@ -66,6 +66,7 @@
         <button mat-raised-button (click)="callREST()">Send request</button>
     </div>
 
+    <!--Response-->
     <div *ngIf="requestSent">
       <h2 class="responses" >Responses</h2>
         <mat-icon class="help" matTooltip="In this imaginary test API, users are fetched and added to jsonplaceholder.typicode.com">
@@ -78,7 +79,7 @@
         <p>Response Code</p>
         <textarea class="codeTextAreaSmall" disabled matInput [(ngModel)]="responseCode"></textarea>
         <p>Response Body</p>
-      <textarea class="codeTextArea" disabled #responses matInput></textarea>
+      <textarea class="codeTextArea" #responses matInput></textarea>
       <div align="right">
         <button class="close-responses" mat-button (click)="requestSent = false">
             Close Responses

@@ -73,17 +73,9 @@ export class ExplorerComponent implements OnInit {
 
   ngOnInit() {
     this.updateJSONRequest();
-    //this.headerArr = Object.entries(this.headers);
     this.headerKeyArr = Object.keys(this.headers);
     this.headerValueArr = Object.values(this.headers);
     this.requestSent = false;
-  }
-
-  ngOnChange() {
-    this.updateJSONRequest();
-    this.headerArr = Object.entries(this.headers);
-    this.headerKeyArr = Object.keys(this.headers);
-    this.headerValueArr = Object.values(this.headers);
   }
 
   //===== GET DATA ======
@@ -163,6 +155,8 @@ export class ExplorerComponent implements OnInit {
     let JSONObj = {"email": this.email, "full-name": this.name, "phone": this.phone};
     this.JSONRequest  = this.beautifyJSON(JSONObj);
   }
+
+  //==== HELPER FUNCTIONS ====
 
   beautifyJSON(JSONString): string {
     // stringify with tabs inserted at each level
