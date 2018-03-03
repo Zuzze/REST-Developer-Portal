@@ -28,7 +28,7 @@
     color: white;
     padding: 1em;;
     margin: 1em;
-    font-family: Courier New, Courier, monospace;
+    font-family: Courier New, Courier, monospace !important;
     font-size: 1.1em;
     border-style: none;
 }
@@ -55,6 +55,7 @@
 
 input {
     width: 100%;
+    font-family: 'Oxygen', sans-serif;
 }
 
 .form-container {
@@ -100,4 +101,8 @@ input {
 .response-img {
     height: 150px;
     margin-top: 1em;
+}
+
+.user-form {
+    font-family: 'Oxygen', sans-serif;
 }

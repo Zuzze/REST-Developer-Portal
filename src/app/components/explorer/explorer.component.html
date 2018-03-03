@@ -34,16 +34,16 @@
                   <mat-form-field>
                     <!--min length will be forced by regex pattern in case form is not empty-->
                     <!--email regex simplified, could be improved (in HTML 5 email type dot is not required)-->
-                    <input matInput #parameterInput type="email" 
+                    <input class="user-input" matInput #parameterInput type="email" 
                     [(ngModel)]="email" (ngModelChange)="updateJSONRequest()" 
                     name="email" required="false" maxlength="24"
                     placeholder="Email" pattern="^$|^[^@\s]+@[^@\s]+$">
                   </mat-form-field>
                   <mat-form-field>
-                    <input matInput #parameterInput type="text" [(ngModel)]="name" (ngModelChange)="updateJSONRequest()" name="name" required placeholder="Full Name">
+                    <input class="user-input" matInput #parameterInput type="text" [(ngModel)]="name" (ngModelChange)="updateJSONRequest()" name="name" required placeholder="Full Name">
                   </mat-form-field>
                   <mat-form-field>
-                    <input matInput #parameterInput type="tel" [(ngModel)]="phone" (ngModelChange)="updateJSONRequest()" name="phone" placeholder="Phone" pattern="\d\d\d-\d\d\d\d" title="Please enter phone number in format XXX-XXXX">
+                    <input class="user-input" matInput #parameterInput type="tel" [(ngModel)]="phone" (ngModelChange)="updateJSONRequest()" name="phone" placeholder="Phone" pattern="\d\d\d-\d\d\d\d" title="Please enter phone number in format XXX-XXXX">
                     <mat-hint align="end">Use format XXX-XXXX</mat-hint>
                   </mat-form-field>
                 </div>
